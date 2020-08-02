@@ -15,7 +15,7 @@ export default {
   name: 'film-select',
   data() {
     return {
-      selectedfilm: null
+    //   selectedfilm: null
     };
   },
   props: ['films'],

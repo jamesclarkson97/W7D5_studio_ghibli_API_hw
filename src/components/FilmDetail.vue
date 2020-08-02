@@ -11,10 +11,10 @@
 
     <div id="buttons">
         <button v-on:click="addCharacters">Show Characters</button>
-        <ul v-if="characters_array">
+        <ul >
+        <!-- <ul v-if="characters_array"> -->
             <li v-for="(character, index) in characters_array" :character="character" :key="index">{{character.name}}</li>
         </ul>
-        <!-- <p v-if="characters_array=[]" >Database incomplete</p> -->
     </div>
 
   </div>
@@ -32,7 +32,7 @@ export default {
         }
     },
     mounted() {
-        eventBus.$on('film-select', (film) => {this.film = film})
+        eventBus.$on('film-select', (film) => {this.film = film}) 
     },
     props: ['characters'],
     methods: {
