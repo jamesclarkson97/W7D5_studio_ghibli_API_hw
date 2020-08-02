@@ -1,7 +1,7 @@
 <template>
   <div>
     <film-select :films="films"/>
-    <p>HEllo WOEOLS</p>
+    <film-detail/>
   </div>
 </template>
 
