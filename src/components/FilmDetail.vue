@@ -10,9 +10,13 @@
       <p>{{film.release_date}}</p>
 
     <div id="buttons">
-        <p>{{characters}}</p>
-        </div>
-      <!-- <div if see more is clicked, display more information> -->
+        <button v-on:click="addCharacters">Show Characters</button>
+        <ul v-if="characters_array">
+            <li v-for="(character, index) in characters_array" :character="character" :key="index">{{character.name}}</li>
+        </ul>
+        <!-- <p v-if="characters_array=[]" >Database incomplete</p> -->
+    </div>
+
   </div>
 </template>
 
@@ -23,15 +27,19 @@ export default {
     name: 'film-detail',
     data() {
         return {
-            film: null
+            film: null,
+            characters_array: []
         }
     },
     mounted() {
         eventBus.$on('film-select', (film) => {this.film = film})
     },
-    props: ['characters']
-
-
+    props: ['characters'],
+    methods: {
+        addCharacters() {
+            this.characters_array = this.characters.filter(character => character.films[0] === this.film.url);
+        }
+    }
 }
 </script>
 
