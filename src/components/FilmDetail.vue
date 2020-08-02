@@ -1,6 +1,18 @@
 <template>
   <div v-if="film">
-      <p>{{film}}</p>
+      <h4>Title: </h4>
+      <p>{{film.title}}</p>
+      <h4>Description: </h4>
+      <p>{{film.description}}</p>
+      <h4>Directed by: </h4>
+      <p>{{film.director}}</p>
+      <h4>Release Date: </h4>
+      <p>{{film.release_date}}</p>
+
+    <div id="buttons">
+        <p>{{characters}}</p>
+        </div>
+      <!-- <div if see more is clicked, display more information> -->
   </div>
 </template>
 
@@ -16,7 +28,8 @@ export default {
     },
     mounted() {
         eventBus.$on('film-select', (film) => {this.film = film})
-    }
+    },
+    props: ['characters']
 
 
 }

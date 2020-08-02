@@ -1,7 +1,7 @@
 <template>
   <div>
     <film-select :films="films"/>
-    <film-detail/>
+    <film-detail :characters="characters"/>
   </div>
 </template>
 
@@ -13,14 +13,17 @@ export default {
   name: 'App',
   data() {
     return {
-      films: []
+      films: [],
+      characters: []
     }
   },
   mounted() {
     fetch('https://ghibliapi.herokuapp.com/films')
     .then(response => response.json())
-    .then(data => this.films = data)
-    console.log(this.films)
+    .then(data => this.films = data),
+    fetch('https://ghibliapi.herokuapp.com/people/')
+    .then(response => response.json())
+    .then(data => this.characters = data)
   },
   components: {
     "film-select": FilmSelect,

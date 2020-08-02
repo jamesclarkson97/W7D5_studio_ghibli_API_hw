@@ -1,8 +1,10 @@
 <template>
   <div>
-  <select @change="handleChange" v-model="selectedFilm">
-    <option v-for="(film, index) in films" :film="film" :key="index" v-bind:value="film">{{film.title}}</option>
-  </select>
+      <h2>Studio Ghibli Films:</h2>
+    <select @change="handleChange" v-model="selectedFilm">
+        <option selected disabled>- Please select a film -</option>
+        <option v-for="(film, index) in films" :film="film" :key="index" v-bind:value="film">{{film.title}}</option>
+    </select>
 </div>
 </template>
 
